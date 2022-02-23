@@ -5,6 +5,11 @@
     padding: 1em;
 }
 
+.textbox {
+    border: 1px solid black;
+    padding: 1em;
+}
+
 .btnInterface {
     display: grid;
     grid-template-columns: 4 1fr;
