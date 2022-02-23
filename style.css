@@ -1,0 +1,101 @@
+.container {
+    border: 5px solid black;
+    height: fit-content;
+    width:fit-content;
+    padding: 1em;
+}
+
+.btnInterface {
+    display: grid;
+    grid-template-columns: 4 1fr;
+    grid-template-rows: 5 1fr;
+    gap: 0.5em;
+}
+
+.btn {
+    border: 1px solid black;
+    height: 1.5em;
+    width: 1.5em;
+    text-align: center;
+    align-items: center;
+}
+
+#btn9 {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+#btn8 {
+    grid-column: 1;
+    grid-row:2;
+}
+
+#btn7 {
+    grid-column: 2;
+    grid-row:2;
+}
+
+#btn6 {
+    grid-column: 3;
+    grid-row:3;
+}
+
+#btn5 {
+    grid-column: 2;
+    grid-row:3;
+}
+
+#btn4 {
+    grid-column: 1;
+    grid-row:3;
+}
+
+#btn3 {
+    grid-column: 3;
+    grid-row:4;
+}
+
+#btn2 {
+    grid-column: 2;
+    grid-row:4;
+}
+
+#btn1 {
+    grid-column: 1;
+    grid-row:4;
+}
+
+#btn0 {
+    grid-column: 2;
+    grid-row:5;
+}
+
+#btnEqual {
+    grid-column: 4;
+    grid-row: 5;
+}
+
+#clear {
+grid-column: 3;
+grid-row:1;
+}
+
+#addOperator {
+    grid-column: 4;
+    grid-row: 1;
+}
+
+#subOperator {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+#multiOperator {
+    grid-column: 4;
+    grid-row:3;
+}  
+
+#divOperator {
+    grid-column: 4;
+    grid-row:4;
+}  
