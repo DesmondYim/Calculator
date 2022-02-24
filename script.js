@@ -1,22 +1,39 @@
 window.onload = function() {
     // store first num when operator clicked
-    let result = "";
+    let result = "&nbsp";
+    let equation = "&nbsp";
+    let storedNum = "";
+    let secondNum = "";
 
-    const textbox = document.createElement("div");
-    textbox.classList.add("textbox");
-    textbox.textContent = result;
-
+    // const textbox = document.createElement("div");
+    // textbox.classList.add("textbox");
+    const textbox = document.querySelector(".textbox");
+    const equationBox = document.querySelector(".equationBox");
+    const numBox = document.querySelector(".numBox");
+    
+    equationBox.innerHTML = equation;
+    numBox.innerHTML = result;
 
     const container = document.querySelector(".container");
     const space = document.querySelector("br");
     container.insertBefore(textbox, space);
 
+
     const numbers = document.querySelectorAll(".number");
     const operators = document.querySelectorAll(".operator");
     const clear = document.querySelector("#clear");
+    
 
-    // when numbers pressed, add to textbox
 
+    // when numbers clicked, 
+    //add to textbox innerHtml and refresh
+
+
+    //clear clicked
+        //clear result and equation
+    //when operators clicked
+        //add result into equation and operator innerHTML
+        //compute equation and return into result
 
     // store operator when clicked
     // document.querySelector(".operate") => for operator buttons

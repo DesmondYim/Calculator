@@ -7,7 +7,19 @@
 
 .textbox {
     border: 1px solid black;
-    padding: 1em;
+    padding: 0.2em;
+}
+
+.equationBox {
+    display: flex;
+    justify-content: flex-end;
+    font-size: smaller;
+}
+
+.numBox {
+    display: flex;
+    justify-content: flex-end;
+    font-size: larger;
 }
 
 .btnInterface {
