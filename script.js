@@ -1,54 +1,113 @@
 window.onload = function() {
     // store first num when operator clicked
-    let result = "&nbsp";
+    let displayedResult = 0;
     let equation = "&nbsp";
     let storedNum = "";
-    let secondNum = "";
+    let storedOperator = "";
 
-    // const textbox = document.createElement("div");
-    // textbox.classList.add("textbox");
-    const textbox = document.querySelector(".textbox");
-    const equationBox = document.querySelector(".equationBox");
-    const numBox = document.querySelector(".numBox");
+    const textbox = document.querySelector("#textbox");
+    const equationBox = document.querySelector("#equationBox");
+    const numBox = document.querySelector("#numBox");
     
     equationBox.innerHTML = equation;
-    numBox.innerHTML = result;
+    numBox.innerHTML = displayedResult;
 
     const container = document.querySelector(".container");
-    const space = document.querySelector("br");
-    container.insertBefore(textbox, space);
 
-
-    const numbers = document.querySelectorAll(".number");
-    const operators = document.querySelectorAll(".operator");
+    const numBtns = document.querySelectorAll(".number");
+    const operatorBtns = document.querySelectorAll(".operator");
     const clear = document.querySelector("#clear");
+    const equal = document.querySelector("#equalBtn");
+
+    const updateDisplay = function () {
+        numBox.innerHTML = displayedResult;
+        equationBox.innerHTML = equation;
+    }
     
+    const handleClear = function() {
+        displayedResult = 0;
+        storedNum = "";
+        equation = "&nbsp";
+        storedOperator = "";
+        updateDisplay();
+        // must include parentheses to invoke
+    }
 
+    const handleNum = function(event) {
+        if (displayedResult == 0) {
+            // don't add "let". It is only for variable declaration
+            displayedResult = event.target.innerHTML;
+        } else {
+            displayedResult = displayedResult + event.target.innerHTML;
+        }
+        updateDisplay();
+    }
 
-    // when numbers clicked, 
-    //add to textbox innerHtml and refresh
+    const calculate = function(event) {
+        switch(storedOperator) {
+            case "*":
+                displayedResult = Number(storedNum) * Number(displayedResult);
+                equation = displayedResult + event.target.innerHTML;
+                updateDisplay();
+                break;
+            case "/":
+                displayedResult = Number(storedNum) / Number(displayedResult);
+                equation = displayedResult + event.target.innerHTML;
+                updateDisplay();
+                break;
+            case "+":
+                displayedResult = Number(storedNum) + Number(displayedResult);
+                equation = displayedResult + event.target.innerHTML;
+                updateDisplay();
+                break;
+            case "-":
+                displayedResult = Number(storedNum) - Number(displayedResult);
+                equation = displayedResult + event.target.innerHTML;
+                updateDisplay();
+                break;
+            case "":
+                equation = displayedResult + event.target.innerHTML;
+                updateDisplay();
+        }
+    }
 
+    const handleOperator = function(event) {
+        calculate(event);
+        storedNum = displayedResult;   
+        displayedResult = "";
+        storedOperator = event.target.innerHTML;
+    }
 
-    //clear clicked
-        //clear result and equation
-    //when operators clicked
-        //add result into equation and operator innerHTML
-        //compute equation and return into result
+    const handleEqual = function(event) {
+        switch(storedOperator) {
+            case "+":
+                equation = `${storedNum} + ${displayedResult} =`
+                displayedResult = Number(storedNum) + Number(displayedResult)
+                break;
+            case "-":
+                equation = `${storedNum} - ${displayedResult} =`
+                displayedResult = Number(storedNum) - Number(displayedResult)
+                break;
+            case "*":
+                equation = `${storedNum} * ${displayedResult} =`
+                displayedResult = Number(storedNum) * Number(displayedResult)
+                break;
+            case "/":
+                equation = `${storedNum} / ${displayedResult} =`
+                displayedResult = Number(storedNum) / Number(displayedResult)
+                break; 
+            case "":
+                equation = `${displayedResult} =`;
+        }
+        updateDisplay();
+        storedNum = displayedResult;
+        displayedResult = "";
+    }
 
-    // store operator when clicked
-    // document.querySelector(".operate") => for operator buttons
-    // document.querySelector(element.HtmlElement) => for individual operators
-
-    // let operatorBtn = document.querySelector(".operatorBtn"); 
-    // operatorBtn.addEventListener("click", () => {
-    //     return operator = 
-    // })
-    // // create operate function
-    // function operate() {
-    //     return Number(firstNum) operator
-    // }
-
-    // create result from operation
-
-
+    
+    // don't include parenthese in callback fx else invoking it even before event
+    clear.addEventListener("click", handleClear);
+    numBtns.forEach(button => button.addEventListener("click", handleNum));
+    operatorBtns.forEach(button => button.addEventListener("click", handleOperator));
+    equal.addEventListener("click", handleEqual);
 }
