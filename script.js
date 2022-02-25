@@ -18,6 +18,7 @@ window.onload = function() {
     const operatorBtns = document.querySelectorAll(".operator");
     const clear = document.querySelector("#clear");
     const equal = document.querySelector("#equalBtn");
+    const backspace = document.querySelector('#delete');
 
     const updateDisplay = function () {
         numBox.innerHTML = displayedResult;
@@ -31,6 +32,15 @@ window.onload = function() {
         storedOperator = "";
         updateDisplay();
         // must include parentheses to invoke
+    }
+
+    const handleBackspace = function() {
+        if (displayedResult.length > 1) {
+            displayedResult = displayedResult.toString().slice(0,displayedResult.length-1);
+        } else {
+            displayedResult = 0;
+        }
+        numBox.innerHTML = displayedResult;
     }
 
     const handleNum = function(event) {
@@ -110,4 +120,5 @@ window.onload = function() {
     numBtns.forEach(button => button.addEventListener("click", handleNum));
     operatorBtns.forEach(button => button.addEventListener("click", handleOperator));
     equal.addEventListener("click", handleEqual);
+    backspace.addEventListener('click', handleBackspace)
 }
